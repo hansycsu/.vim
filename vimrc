@@ -81,6 +81,7 @@ Plugin 'manually_taglist', {'pinned': 1}
     "}}}
 "   CtrlP Setting {{{
     let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line']
+    let g:ctrlp_working_path_mode = 0
     nnoremap zp :CtrlP
     nnoremap zpt :CtrlPTag<CR>
     nnoremap zpb :CtrlPBufTag<CR>
@@ -133,6 +134,7 @@ set ttimeoutlen=0
 " Mappings {{{
 "   Simple Remapping {{{
     nnoremap Q gQ
+    nnoremap QQ :qa<CR>
     nnoremap Y y$
     noremap <expr> j (v:count == 0 ? 'gj' : 'j')
     noremap <expr> k (v:count == 0 ? 'gk' : 'k')
