@@ -216,7 +216,12 @@ set ttimeoutlen=0
             if addChar[0] == 'q' || addChar[0] == 'Q'
                 return
             endif
-            exe "normal gvxi".addChar[0].addChar[1]."\eP"
+            if col('.') == col('$')
+                let editMode = 'a'
+            else
+                let editMode = 'i'
+            endif
+            exe "normal gvx".editMode.addChar[0].addChar[1]."\eP"
 
             let @" = tempReg1
             let @- = tempReg2
