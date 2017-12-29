@@ -216,7 +216,7 @@ set ttimeoutlen=0
             if addChar[0] == 'q' || addChar[0] == 'Q'
                 return
             endif
-            if col('.') == col('$')
+            if col("'>") == col('$') - 1
                 let editMode = 'a'
             else
                 let editMode = 'i'
