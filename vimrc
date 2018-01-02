@@ -175,7 +175,7 @@ set ttimeoutlen=0
     nnoremap <F8> :so ~/Session.vim<CR>
     "}}}
 "   Buffer Control {{{
-    nnoremap <C-Tab> <C-^>
+    nnoremap <C-q> <C-^>
     nnoremap <silent> <C-H> :bp<CR>
     nnoremap <silent> <C-L> :bn<CR>
     nnoremap <silent> <M-d> :let hans_varY=@#\|bp\|bd!#\|let @#=hans_varY\|unlet hans_varY<CR>
