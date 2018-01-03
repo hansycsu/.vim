@@ -153,6 +153,10 @@ set ttimeoutlen=0
     noremap zr zR
     nnoremap <CR> o<C-U><Esc>
     "}}}
+"   Commands {{{
+    command! CopyAllInBuffer normal ggyG<c-o><c-o>
+    command! CD cd %:p:h
+    "}}}
 "   Function Key {{{
     nnoremap <F1> :tab h 
     nnoremap <silent> <F2> :se hls!<CR>
