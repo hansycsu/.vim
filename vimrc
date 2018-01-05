@@ -91,6 +91,7 @@ Plugin 'manually_taglist', {'pinned': 1}
     nnoremap <silent> <M-p> :CtrlPLastMode<CR>
     "}}}
 "   NERDTree Setting {{{
+    let g:NERDTreeMapChangeRoot = "CC"
     nnoremap <silent> <Leader>e :call ToggleNERDTreeF()<CR>
         func! ToggleNERDTreeF()
             if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) == 1
@@ -124,6 +125,7 @@ set virtualedit=block
 set diffopt+=vertical
 set tags=./tags;,tags
 set ttimeoutlen=0
+set showcmd
 "   Color Scheme Setting {{{
     if has('gui_running')
         exe "colo ".s:GuiColorScheme
