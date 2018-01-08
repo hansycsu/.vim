@@ -195,6 +195,7 @@ set showcmd
     nnoremap gw <C-W>w
     nnoremap gW <C-W>W
     nnoremap <M-c> <C-W>c
+    nnoremap <silent> <M-o> :only<CR>
     nnoremap <C-c> <C-W>c
     nnoremap zx :bd<CR>
     nnoremap <M-,> <C-W><
