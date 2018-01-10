@@ -126,6 +126,7 @@ set diffopt+=vertical
 set tags=./tags;,tags
 set ttimeoutlen=0
 set showcmd
+set nowrap
 "   Color Scheme Setting {{{
     if has('gui_running')
         exe "colo ".s:GuiColorScheme
@@ -142,21 +143,22 @@ set showcmd
     noremap <expr> j (v:count == 0 ? 'gj' : 'j')
     noremap <expr> k (v:count == 0 ? 'gk' : 'k')
     nnoremap <BS> X
-    noremap <C-J> J
-    noremap <Up> <C-Y>
-    noremap <Down> <C-E>
-    inoremap <C-Up> <C-X><C-Y>
-    inoremap <C-Down> <C-X><C-E>
+    noremap <C-j> J
+    noremap <Up> <C-y>
+    noremap <Down> <C-e>
+    inoremap <C-Up> <C-x><C-y>
+    inoremap <C-Down> <C-x><C-e>
     noremap <C-@> @@
-    inoremap <C-J> <esc>gUiwea
-    command! CopyAllInBuffer normal ggyG<c-o><c-o>
+    inoremap <C-j> <esc>gUiwea
     nnoremap S :wa<CR>
     noremap zm zM
     noremap zr zR
-    nnoremap <CR> o<C-U><Esc>
+    nnoremap <CR> o<C-u><Esc>
+    vnoremap <C-c> "*y
+    map! <C-a> <Home>
     "}}}
 "   Commands {{{
-    command! CopyAllInBuffer normal ggyG<c-o><c-o>
+    command! CopyAllInBuffer normal gg"*yG<c-o><c-o>
     command! CD cd %:p:h
     "}}}
 "   Function Key {{{
@@ -182,8 +184,8 @@ set showcmd
     "}}}
 "   Buffer Control {{{
     nnoremap <C-q> <C-^>
-    nnoremap <silent> <C-H> :bp<CR>
-    nnoremap <silent> <C-L> :bn<CR>
+    nnoremap <silent> <C-h> :bp<CR>
+    nnoremap <silent> <C-l> :bn<CR>
     nnoremap <silent> <M-d> :let hans_varY=@#\|bp\|bd!#\|let @#=hans_varY\|unlet hans_varY<CR>
     nnoremap <silent> <Leader>bp :bp<CR>
     nnoremap <silent> <Leader>bn :bn<CR>
@@ -192,22 +194,22 @@ set showcmd
     nnoremap <Leader>bb :ls<CR>:b
     "}}}
 "   Window & Tab Control {{{
-    nnoremap gw <C-W>w
-    nnoremap gW <C-W>W
-    nnoremap <M-c> <C-W>c
+    nnoremap gw <C-w>w
+    nnoremap gW <C-w>W
+    nnoremap <M-c> <C-w>c
     nnoremap <silent> <M-o> :only<CR>
-    nnoremap <C-c> <C-W>c
+    nnoremap <C-c> <C-w>c
     nnoremap zx :bd<CR>
-    nnoremap <M-,> <C-W><
-    nnoremap <M-.> <C-W>>
-    nnoremap <M--> <C-W>-
-    nnoremap <M-=> <C-W>+
-    nnoremap <silent> <C-W>t :tabe %<CR>
+    nnoremap <M-,> <C-w><
+    nnoremap <M-.> <C-w>>
+    nnoremap <M--> <C-w>-
+    nnoremap <M-=> <C-w>+
+    nnoremap <silent> <C-w>t :tabe %<CR>
     "}}}
 "   Complex Remapping & Scripts {{{
-    vnoremap <silent> * :<C-U>
+    vnoremap <silent> * :<C-u>
       \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-      \gvy/<C-R><C-R>=substitute(
+      \gvy/<C-r><C-r>=substitute(
       \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
       \gV:call setreg('"', old_reg, old_regtype)<CR>
 
