@@ -156,6 +156,7 @@ set nowrap
     nnoremap <CR> o<C-u><Esc>
     vnoremap <C-c> "*y
     map! <C-a> <Home>
+    imap <C-e> <End>
     "}}}
 "   Commands {{{
     command! CopyAllInBuffer normal gg"*yG<c-o><c-o>
