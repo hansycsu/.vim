@@ -149,7 +149,7 @@ set nowrap
     inoremap <C-Up> <C-x><C-y>
     inoremap <C-Down> <C-x><C-e>
     noremap <C-@> @@
-    inoremap <C-j> <esc>gUiwea
+    inoremap <C-j> <Esc>gUiwea
     nnoremap S :wa<CR>
     noremap zm zM
     noremap zr zR
@@ -164,6 +164,7 @@ set nowrap
 "   Function Key {{{
     nnoremap <F1> :tab h 
     nnoremap <silent> <F2> :se hls!<CR>
+    inoremap <silent> <F2> <C-o>:se hls!<CR>
     nnoremap <silent> <F4> :call EditOrSaveVimrc()<CR>
     nnoremap <silent> <C-F4> :tabe $MYVIMRC<CR>
     nnoremap <silent> <S-F4> :tabe $MYVIMRC<CR>
@@ -178,6 +179,7 @@ set nowrap
         endfunc
         endif
     nnoremap <silent> <F6> :exe &nu?'se nu! rnu':'se nu nornu'<CR>
+    inoremap <silent> <F6> <C-o>:exe &nu?'se nu! rnu':'se nu nornu'<CR>
         "God like ( :exe 'set nu!' &nu ? 'rnu!' : '' )
     nnoremap <F7> :mks! ~/Session.vim<CR>
     nnoremap <F8> :so ~/Session.vim<CR>

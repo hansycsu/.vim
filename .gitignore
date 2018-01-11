@@ -1,5 +1,6 @@
 *viminfo
 bundle/*
 !bundle/manually_*
+!bundle/Vundle.vim
 mvimrc
 .tmp
