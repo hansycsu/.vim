@@ -18,6 +18,7 @@ set rtp+=$VIMFILES
 
 " Encoding & GUI {{{
 set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,taiwan,prc,japan,latin1
 set wildmenu
 set laststatus=2
 set statusline=[%t%r]\ [%{&ff}\|%{&fenc}]
@@ -92,8 +93,8 @@ Plugin 'manually_taglist', {'pinned': 1}
     "}}}
 "   NERDTree Setting {{{
     let g:NERDTreeMapChangeRoot = "CC"
-    nnoremap <silent> <Leader>e :call ToggleNERDTreeF()<CR>
-        func! ToggleNERDTreeF()
+    nnoremap <silent> <Leader>e :call My_toggleNERDTreeF()<CR>
+        func! My_toggleNERDTreeF()
             if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) == 1
                 NERDTreeClose
             else
@@ -166,11 +167,11 @@ set nowrap
     nnoremap <F1> :tab h 
     nnoremap <silent> <F2> :se hls!<CR>
     inoremap <silent> <F2> <C-o>:se hls!<CR>
-    nnoremap <silent> <F4> :call EditOrSaveVimrc()<CR>
+    nnoremap <silent> <F4> :call My_editOrSaveVimrc()<CR>
     nnoremap <silent> <C-F4> :tabe $MYVIMRC<CR>
     nnoremap <silent> <S-F4> :tabe $MYVIMRC<CR>
         if !exists('*EditOrSaveVimrc')
-        func! EditOrSaveVimrc()
+        func! My_editOrSaveVimrc()
             if expand('%:p') == expand(expand('$MYVIMRC'))
                 write
                 source %
@@ -216,8 +217,8 @@ set nowrap
       \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
       \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-    vnoremap <Leader>q1 :call AddAroundSelected()<CR>
-        func! AddAroundSelected()
+    vnoremap <Leader>q1 :call My_addAroundSelected()<CR>
+        func! My_addAroundSelected()
             let tempReg1 = @"
             let tempReg2 = @-
             let tempReg3 = @*
@@ -262,5 +263,9 @@ set nowrap
     " Machine settings
     if filereadable(expand(expand("$VIMFILES/mvimrc")))
         source $VIMFILES/mvimrc
+    endif
+    " Functions
+    if filereadable(expand(expand("$VIMFILES/funcs.vim")))
+        source $VIMFILES/funcs.vim
     endif
 "}}}
