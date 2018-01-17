@@ -14,6 +14,11 @@ if !exists('$VIMFILES')
 endif
 set rtp+=$VIMFILES
 "}}}
+" Remap <Leader> {{{
+let mapleader = ','
+noremap \ ,
+noremap , <Leader>
+"}}}
 
 
 " Encoding & GUI {{{
@@ -47,6 +52,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'artoj/qmake-syntax-vim'
+Plugin 'tpope/vim-surround'
 "------ Install Manually ------
 Plugin 'manually_visincr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
@@ -68,7 +74,7 @@ Plugin 'manually_taglist', {'pinned': 1}
     endif
     let g:airline_symbols.crypt = ''
     let g:airline_symbols.maxlinenr = '㏑'
-    let g:airline_symbols.linenr = '' 
+    let g:airline_symbols.linenr = ''
     nmap <Leader>1 <Plug>AirlineSelectTab1
     nmap <Leader>2 <Plug>AirlineSelectTab2
     nmap <Leader>3 <Plug>AirlineSelectTab3
@@ -156,8 +162,11 @@ set nowrap
     noremap zr zR
     nnoremap <CR> o<C-u><Esc>
     vnoremap <C-c> "*y
-    map! <C-a> <Home>
+    vnoremap <C-v> "*p
+    cmap <C-a> <Home>
+    imap <C-a> <C-o>^
     imap <C-e> <End>
+    nnoremap <Space> "
     "}}}
 "   Commands {{{
     command! CopyAllInBuffer normal gg"*yG<c-o><c-o>
@@ -193,9 +202,9 @@ set nowrap
     nnoremap <silent> <M-d> :let hans_varY=@#\|bp\|bd!#\|let @#=hans_varY\|unlet hans_varY<CR>
     nnoremap <silent> <Leader>bp :bp<CR>
     nnoremap <silent> <Leader>bn :bn<CR>
-    nnoremap <Leader>bd :ls<CR>:bd
-    nnoremap <Leader>bw :ls<CR>:bw
-    nnoremap <Leader>bb :ls<CR>:b
+    nnoremap <Leader>bd :ls<CR>:bd<Space>
+    nnoremap <Leader>bw :ls<CR>:bw<Space>
+    nnoremap <Leader>bb :ls<CR>:b<Space>
     "}}}
 "   Window & Tab Control {{{
     nnoremap gw <C-w>w
@@ -209,6 +218,12 @@ set nowrap
     nnoremap <M--> <C-w>-
     nnoremap <M-=> <C-w>+
     nnoremap <silent> <C-w>t :tabe %<CR>
+    nnoremap <silent> <C-n> :tabnew<CR>
+    "}}}
+"   Quick Fix {{{
+    nnoremap <silent><Leader>cw :cw<CR>
+    nnoremap <silent><Leader>cn :cn<CR>
+    nnoremap <silent><Leader>cp :cp<CR>
     "}}}
 "   Complex Remapping & Scripts {{{
     vnoremap <silent> * :<C-u>
