@@ -53,6 +53,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'artoj/qmake-syntax-vim'
 Plugin 'tpope/vim-surround'
+Plugin 'guns/xterm-color-table.vim'
 "------ Install Manually ------
 Plugin 'manually_visincr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}

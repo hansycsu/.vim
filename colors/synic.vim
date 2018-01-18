@@ -29,13 +29,13 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "synic"
-hi Normal guifg=ivory guibg=Black ctermfg=231 ctermbg=NONE
+hi Normal guifg=ivory guibg=Black ctermfg=231 ctermbg=0
 hi SignColumn gui=NONE guifg=Cyan guibg=Grey cterm=NONE ctermfg=51 ctermbg=250
 hi SpellBad gui=undercurl guifg=NONE guisp=Red cterm=undercurl ctermfg=NONE ctermbg=196
 hi SpellCap gui=undercurl guifg=NONE guisp=Blue cterm=undercurl ctermfg=NONE ctermbg=21
 hi SpellRare gui=undercurl guifg=NONE guisp=Magenta cterm=undercurl ctermfg=NONE ctermbg=201
 hi SpellLocal gui=undercurl guifg=NONE guisp=Cyan cterm=undercurl ctermfg=NONE ctermbg=51
-hi Pmenu gui=NONE guifg=NONE guibg=Magenta cterm=NONE ctermfg=NONE ctermbg=201
+hi Pmenu gui=NONE guifg=NONE guibg=#272d2f cterm=NONE ctermfg=NONE ctermbg=236
 hi PmenuSel gui=NONE guifg=NONE guibg=DarkGrey cterm=NONE ctermfg=NONE ctermbg=248
 hi PmenuSbar gui=NONE guifg=NONE guibg=Grey cterm=NONE ctermfg=NONE ctermbg=250
 hi PmenuThumb gui=reverse guifg=NONE guibg=NONE cterm=reverse ctermfg=NONE ctermbg=NONE
@@ -57,7 +57,8 @@ hi DiffText gui=NONE guifg=Yellow guibg=LightSkyBlue4 cterm=NONE ctermfg=226 cte
 hi Cursor guibg=Lavender guifg=Black ctermfg=16 ctermbg=255
 hi lCursor guibg=Lavender guifg=Black ctermfg=16 ctermbg=255
 hi Directory guifg=LightGreen guibg=bg ctermfg=120 ctermbg=NONE
-hi LineNr guifg=LightBlue3 guibg=bg ctermfg=110 ctermbg=NONE
+hi LineNr guifg=LightBlue3 guibg=#121212 ctermfg=110 ctermbg=233
+hi CursorLineNr gui=bold guifg=Yellow guibg=#121212 term=bold ctermfg=11 ctermbg=233
 hi MoreMsg gui=NONE guifg=SeaGreen guibg=bg cterm=NONE ctermfg=29 ctermbg=NONE
 hi NonText gui=NONE guifg=Cyan4 guibg=Black cterm=NONE ctermfg=30 ctermbg=NONE
 hi Question gui=NONE guifg=LimeGreen guibg=bg cterm=NONE ctermfg=77 ctermbg=NONE

@@ -1,15 +1,0 @@
-"c	LINE	0
-	/** Method      : update
-	  * Description : Update command, lnI, lnF, max for access.
-	  *               Also, update numOfCmds for next() checking.
-	  *
-	  * Author      : YC Su <hansycsu@gmail.com>
-	  * Update      : 2017.12.12
-	*/
-|3,0,12,1,7,0,1513144731,"/** Method      : update","  * Description : Update command, lnI, lnF, max for access.","  *               Also, update numOfCmds for next() checking.","  *","  * Author      : YC Su <hansycsu@gmail.com>","  * Update      : 2017.12.12","*/"
-""f@	CHAR	0
-	o{}ik$a
-|3,3,15,0,1,0,1513144807,"o{}ik$a"
-"s	CHAR	0
-	// Added by YC Su 2017.12.05
-|3,0,28,0,1,0,1513144793,"// Added by YC Su 2017.12.05"
