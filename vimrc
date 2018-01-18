@@ -148,8 +148,8 @@ set nowrap
     nnoremap Q gQ
     nnoremap QQ :qa<CR>
     nnoremap Y y$
-    noremap <expr> j (v:count == 0 ? 'gj' : 'j')
-    noremap <expr> k (v:count == 0 ? 'gk' : 'k')
+    "noremap <expr> j (v:count == 0 ? 'gj' : 'j')
+    "noremap <expr> k (v:count == 0 ? 'gk' : 'k')
     nnoremap <BS> X
     noremap <C-j> J
     noremap <Up> <C-y>
@@ -167,7 +167,8 @@ set nowrap
     cmap <C-a> <Home>
     imap <C-a> <C-o>^
     imap <C-e> <End>
-    nnoremap <Space> "
+    noremap ' "
+    noremap " '
     "}}}
 "   Commands {{{
     command! CopyAllInBuffer normal gg"*yG<c-o><c-o>
