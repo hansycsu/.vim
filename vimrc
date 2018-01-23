@@ -169,6 +169,7 @@ set nowrap
     imap <C-e> <End>
     noremap ' "
     noremap " '
+    imap <C-l> <C-n><C-p>
     "}}}
 "   Commands {{{
     command! CopyAllInBuffer normal gg"*yG<c-o><c-o>
