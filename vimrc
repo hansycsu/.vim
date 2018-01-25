@@ -169,7 +169,7 @@ set nowrap
   imap <C-l> <C-n><C-p>
   "}}}
 " Commands {{{
-  command! CopyAllInBuffer normal gg"*yG<c-o><c-o>
+  command! CopyAllInBuffer normal gg'*yG<c-o><c-o>
   command! CD cd %:p:h
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
   "}}}
