@@ -69,3 +69,13 @@ func! My_addAroundSelected()
   let @- = tempReg2
   let @* = tempReg3
 endfunc
+
+func! My_toggleMouse()
+  if &mouse != ''
+    set mouse=
+    echo 'Mouse disabled'
+  else
+    set mouse=a
+    echo 'Mouse enabled'
+  endif
+endfunc

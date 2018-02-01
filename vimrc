@@ -185,6 +185,8 @@ set nowrap
     "God like ( :exe 'set nu!' &nu ? 'rnu!' : '' )
   nnoremap <F7> :mks! ~/Session.vim<CR>
   nnoremap <F8> :so ~/Session.vim<CR>
+  nmap <silent><F12> :call My_toggleMouse()<CR>
+  vmap <silent><F12> :<C-u>call My_toggleMouse()<CR>gv
   "}}}
 " Buffer Control {{{
   nnoremap <C-q> <C-^>
@@ -200,6 +202,7 @@ set nowrap
 " Window & Tab Control {{{
   nnoremap gw <C-w>w
   nnoremap gW <C-w>W
+  nnoremap gp <C-w>p
   nnoremap <M-c> <C-w>c
   nnoremap <silent> <M-o> :only<CR>
   nnoremap <C-c> <C-w>c
