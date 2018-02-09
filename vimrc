@@ -166,6 +166,7 @@ set nowrap
   imap <C-e> <End>
   noremap ' "
   noremap " '
+  noremap '' "*
   imap <C-l> <C-n><C-p>
   "}}}
 " Commands {{{
