@@ -41,9 +41,9 @@ endif
 " Vundle Initialization {{{
   set nocompatible
   filetype off
-  exe "set rtp+=".s:VundlePath
+  exe "set rtp+=" . s:VundlePath
   "call vundle#begin(s:BundlePath)
-  exe "call vundle#begin('".expand(s:BundlePath)."')"
+  exe "call vundle#begin('" . expand(s:BundlePath) . "')"
   "}}}
 "-------- Plugin List ---------
 Plugin 'VundleVim/Vundle.vim'
@@ -134,9 +134,9 @@ set showcmd
 set nowrap
 " Color Scheme Setting {{{
   if has('gui_running')
-    exe "colo ".s:GuiColorScheme
+    exe "colo " . s:GuiColorScheme
   else
-    exe "colo ".s:ConsoleColorScheme
+    exe "colo " . s:ConsoleColorScheme
   endif
   "}}}
 "}}}
@@ -173,6 +173,7 @@ set nowrap
   command! CopyAllInBuffer normal gg'*yG<c-o><c-o>
   command! CD cd %:p:h
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
+  command! -register CopyMatches call My_copyMatches(<q-reg>)
   "}}}
 " Function Key {{{
   nnoremap <F1> :tab h 
@@ -237,12 +238,12 @@ set nowrap
   set backupdir-=.
   set directory+=.
   set backupdir+=.
-  exe 'set directory^='.expand('$VIMFILES/.tmp')
-  exe 'set backupdir^='.expand('$VIMFILES/.tmp')
+  exe 'set directory^=' . expand('$VIMFILES/.tmp')
+  exe 'set backupdir^=' . expand('$VIMFILES/.tmp')
 " Packages
   packadd! matchit
 " Change viminfo path
-  let &viminfo .= ',n'.$VIMFILES.'/viminfo'
+  let &viminfo .= ',n' . $VIMFILES . '/viminfo'
 "}}}
 " Load Local Settings {{{
   " OS settings

@@ -79,3 +79,10 @@ func! My_toggleMouse()
     echo 'Mouse enabled'
   endif
 endfunc
+
+func! My_copyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '*' : a:reg
+  exe 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunc
