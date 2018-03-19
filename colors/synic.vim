@@ -29,7 +29,11 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "synic"
-hi Normal guifg=ivory guibg=Black ctermfg=231 ctermbg=0
+" Check ctermbg is black by XtermColorTable
+if !exists("g:black")
+  let g:black = 0
+endif
+exe "hi Normal guifg=ivory guibg=Black ctermfg=231 ctermbg=" . g:black
 hi SignColumn gui=NONE guifg=Cyan guibg=Grey cterm=NONE ctermfg=51 ctermbg=250
 hi SpellBad gui=undercurl guifg=NONE guisp=Red cterm=undercurl ctermfg=NONE ctermbg=196
 hi SpellCap gui=undercurl guifg=NONE guisp=Blue cterm=undercurl ctermfg=NONE ctermbg=21
