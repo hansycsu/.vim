@@ -3,10 +3,7 @@ let $VIMFILES = '~/.vim'
 let $MYVIMRC  = '~/.vim/vimrc'
 let s:VundlePath = '$VIMFILES/bundle/Vundle.vim'
 let s:BundlePath = '$VIMFILES/bundle'
-let s:MyFont     = 'DejaVu_Sans_Mono_for_Powerline:h16'
-let s:MyFontWide = 'Microsoft_YaHei_Mono:h16'
-let s:GuiColorScheme     = 'synic'
-let s:ConsoleColorScheme = 'synic'
+let s:ColorScheme     = 'synic'
 "----------------------------
 " Defalut Path {{{
 if !exists('$VIMFILES')
@@ -21,18 +18,14 @@ noremap , <Leader>
 "}}}
 
 
-" Encoding & GUI {{{
+" Encoding & Interface {{{
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,taiwan,prc,japan,latin1
 set wildmenu
 set laststatus=2
 set statusline=[%t%r]\ [%{&ff}\|%{&fenc}]
               \%=(%c,\ %l)\ --\ %P\ --\ \ [lines:\ %L]
-if has('gui_running')
-  set guioptions=M
-  exe "set guifont=" . s:MyFont
-  exe "set guifontwide=" . s:MyFontWide
-else
+if !has('gui_running')
   set t_Co=256
   language en_US.utf8
 endif
@@ -132,13 +125,7 @@ set tags=./tags;,tags
 set ttimeoutlen=0
 set showcmd
 set nowrap
-" Color Scheme Setting {{{
-  if has('gui_running')
-    exe "colo " . s:GuiColorScheme
-  else
-    exe "colo " . s:ConsoleColorScheme
-  endif
-  "}}}
+exe "colo " . s:ColorScheme
 "}}}
 " Mappings {{{
 " Simple Remapping {{{
@@ -250,10 +237,21 @@ set nowrap
   if filereadable(expand(expand("$VIMFILES/ovimrc")))
     source $VIMFILES/ovimrc
   endif
+
   " Machine settings
   if filereadable(expand(expand("$VIMFILES/mvimrc")))
     source $VIMFILES/mvimrc
   endif
+
+  " GUI settings
+  "   Get gvimrc example here:
+  "   https://gist.github.com/f456e042d7c9926684ced7c0af1aa017
+  "   or use git:
+  "   $ git clone https://gist.github.com/f456e042d7c9926684ced7c0af1aa017.git
+  if has('gui_running') && filereadable(expand(expand("$VIMFILES/gvimrc")))
+    source $VIMFILES/gvimrc
+  endif
+
   " Functions
   if filereadable(expand(expand("$VIMFILES/funcs.vim")))
     source $VIMFILES/funcs.vim

@@ -3,4 +3,5 @@ bundle/*
 !bundle/manually_*
 !bundle/Vundle.vim
 mvimrc
+gvimrc
 .tmp
