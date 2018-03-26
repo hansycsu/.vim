@@ -153,11 +153,19 @@ exe "colo " . s:ColorScheme
   imap <C-e> <End>
   noremap ' "
   noremap " '
-  noremap '' "*
+  if has('unix')
+    noremap '' "+
+  else
+    noremap '' "*
+  endif
   imap <C-l> <C-n><C-p>
   "}}}
 " Commands {{{
-  command! CopyAllInBuffer normal gg'*yG<c-o><c-o>
+  if has('unix')
+    command! CopyAllInBuffer normal gg'+yG<c-o><c-o>
+  else
+    command! CopyAllInBuffer normal gg'*yG<c-o><c-o>
+  endif
   command! CD cd %:p:h
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
   command! -register CopyMatches call My_copyMatches(<q-reg>)
