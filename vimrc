@@ -146,8 +146,13 @@ exe "colo " . s:ColorScheme
   noremap zm zM
   noremap zr zR
   nnoremap <CR> o<C-u><Esc>
-  vnoremap <C-c> "*y
-  vnoremap <C-v> "*p
+  if has('unix')
+    vnoremap <C-c> "+y
+    vnoremap <C-v> "+p
+  else
+    vnoremap <C-c> "*y
+    vnoremap <C-v> "*p
+  endif
   cmap <C-a> <Home>
   imap <C-a> <C-o>^
   imap <C-e> <End>
