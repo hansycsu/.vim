@@ -48,7 +48,7 @@ Plugin 'artoj/qmake-syntax-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'guns/xterm-color-table.vim'
 "------ Install Manually ------
-Plugin 'manually_visincr', {'pinned': 1}
+Plugin 'manually_VisIncr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
 "------------------------------
 " Vundle Initialization Finish {{{
