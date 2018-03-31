@@ -125,6 +125,9 @@ set tags=./tags;,tags
 set ttimeoutlen=0
 set showcmd
 set nowrap
+set linebreak
+set breakat-=_
+set sidescroll=1
 exe "colo " . s:ColorScheme
 "}}}
 " Mappings {{{
@@ -164,6 +167,8 @@ exe "colo " . s:ColorScheme
     noremap '' "*
   endif
   imap <C-l> <C-n><C-p>
+  nmap <Left> zh
+  nmap <Right> zl
   "}}}
 " Commands {{{
   if has('unix')
