@@ -47,6 +47,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'artoj/qmake-syntax-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'guns/xterm-color-table.vim'
+Plugin 'mattn/emmet-vim'
 "------ Install Manually ------
 Plugin 'manually_VisIncr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
@@ -101,6 +102,10 @@ Plugin 'manually_taglist', {'pinned': 1}
   "}}}
 " TagList Setting {{{
   nnoremap <silent> <F3> :TlistToggle<CR>
+  "}}}
+" Emmet Setting {{{
+  let g:user_emmet_leader_key='<C-L>'
+  let g:emmet_html5 = 0
   "}}}
 "}}}
 " ****** Basic Setting****** {{{
@@ -166,7 +171,6 @@ exe "colo " . s:ColorScheme
   else
     noremap '' "*
   endif
-  imap <C-l> <C-n><C-p>
   nmap <Left> zh
   nmap <Right> zl
   "}}}
