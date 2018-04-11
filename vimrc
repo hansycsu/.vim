@@ -106,6 +106,8 @@ Plugin 'manually_taglist', {'pinned': 1}
 " Emmet Setting {{{
   let g:user_emmet_leader_key='<C-L>'
   let g:emmet_html5 = 0
+  vmap <Tab> <C-l>,
+  imap <Tab> <C-l>,
   "}}}
 "}}}
 " ****** Basic Setting****** {{{
