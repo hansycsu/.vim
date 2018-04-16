@@ -86,3 +86,10 @@ func! My_copyMatches(reg)
   let reg = empty(a:reg) ? '*' : a:reg
   exe 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunc
+
+func! My_reindent(old, new)
+  exe 'set ts=' . a:old . ' sts=' . a:old . ' noet'
+  retab!
+  exe 'set ts=' . a:new . ' sts=' . a:new . ' et'
+  retab!
+endfunc
