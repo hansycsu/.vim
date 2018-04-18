@@ -208,6 +208,7 @@ exe "colo " . s:ColorScheme
   nnoremap <silent> <M-d> :let hans_varY=@#\|bp\|bd!#\|let @#=hans_varY\|unlet hans_varY<CR>
   nnoremap <silent> <Leader>bp :bp<CR>
   nnoremap <silent> <Leader>bn :bn<CR>
+  nnoremap <silent> <Leader>bo :%bd\|e#\|bd#<CR>
   nnoremap <Leader>bd :ls<CR>:bd<Space>
   nnoremap <Leader>bw :ls<CR>:bw<Space>
   nnoremap <Leader>bb :ls<CR>:b<Space>
