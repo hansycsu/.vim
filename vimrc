@@ -250,14 +250,9 @@ exe "colo " . s:ColorScheme
   hi MyMatch3 ctermbg=DarkRed guibg=DarkGreen ctermfg=White guifg=White
   nmap <silent> <Leader>mm :match MyMatch /\<<C-r>=expand('<cword>')<CR>\>/<CR>
   nmap <silent> <Leader>m1 :match MyMatch /\<<C-r>=expand('<cword>')<CR>\>/<CR>
-  nmap <silent> <Leader>m2 :2match MyMatch2 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
-  nmap <silent> <Leader>m3 :3match MyMatch3 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
+  nmap <silent> <Leader>m2 :match MyMatch2 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
+  nmap <silent> <Leader>m3 :match MyMatch3 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
   nmap <silent> <Leader>mc :match<CR>
-  nmap <silent> <Leader>mcc :match<CR>
-  nmap <silent> <Leader>mc1 :match<CR>
-  nmap <silent> <Leader>mc2 :2match<CR>
-  nmap <silent> <Leader>mc3 :3match<CR>
-  nmap <silent> <Leader>mca :match \| 2match \| 3match<CR>
 "}}}
 " Others {{{
 " Backup & Swap
