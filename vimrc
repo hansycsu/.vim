@@ -104,10 +104,10 @@ Plugin 'manually_taglist', {'pinned': 1}
   nnoremap <silent> <F3> :TlistToggle<CR>
   "}}}
 " Emmet Setting {{{
-  let g:user_emmet_leader_key='<C-L>'
+  let g:user_emmet_leader_key='<C-\>'
+  let g:user_emmet_expandabbr_key = '<Tab>'
+  imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
   let g:emmet_html5 = 0
-  vmap <Tab> <C-l>,
-  imap <Tab> <C-l>,
   "}}}
 "}}}
 " ****** Basic Setting****** {{{
