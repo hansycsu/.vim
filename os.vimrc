@@ -1,22 +1,21 @@
-" For MS Windows {{{
+" For MS Windows
 if has('win32')
-"-------- Set First ---------
-let s:Git_VIMRUNTIME = '/c/Program Files/Git/usr/share/vim/vim80'
-let s:Git_EXE = 'C:\Program Files\Git\git-bash.exe'
-"----------------------------
+  " These path can be override in local_vimrc
+  let g:Git_VIMRUNTIME = '/c/Program Files/Git/usr/share/vim/vim80'
+  let g:Git_EXE = 'C:\Program Files\Git\git-bash.exe'
 
-nnoremap <silent> <F9> :!start explorer.exe /select,%:p<CR>
-nnoremap <silent> <F10> :call OpenGitBashHere()<CR>
+  nnoremap <silent> <F9> :!start explorer.exe /select,%:p<CR>
+  nnoremap <silent> <F10> :call OpenGitBashHere()<CR>
   func! OpenGitBashHere()
     let tmpVRT = $VIMRUNTIME
-    let $VIMRUNTIME = s:Git_VIMRUNTIME
-    exe "!start ".s:Git_EXE." --cd=%:p:h"
+    let $VIMRUNTIME = g:Git_VIMRUNTIME
+    exe "!start ".g:Git_EXE." --cd=%:p:h"
     let $VIMRUNTIME = tmpVRT
   endfunc
-map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+  map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 endif
-"}}}
-" For Unix like System {{{
+
+" For Unix like System
 if has('unix') && !has('gui_running')
   exe "set <M-c>=\ec"
   exe "set <M-d>=\ed"
@@ -33,4 +32,3 @@ if has('unix') && !has('gui_running')
   map <F13> <C-F4>
   map! <F13> <C-F4>
 endif
-"}}}

@@ -2,6 +2,7 @@
 bundle/*
 !bundle/manually_*
 !bundle/Vundle.vim
-mvimrc
+local.vimrc
 gvimrc
 .tmp
+*.txt

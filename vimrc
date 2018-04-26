@@ -267,15 +267,15 @@ exe "colo " . s:ColorScheme
 " Change viminfo path
   let &viminfo .= ',n' . $VIMFILES . '/viminfo'
 "}}}
-" Load Local Settings {{{
+" Load OS/Local Settings {{{
   " OS settings
-  if filereadable(expand(expand("$VIMFILES/ovimrc")))
-    source $VIMFILES/ovimrc
+  if filereadable(expand(expand("$VIMFILES/os.vimrc")))
+    source $VIMFILES/os.vimrc
   endif
 
-  " Machine settings
-  if filereadable(expand(expand("$VIMFILES/mvimrc")))
-    source $VIMFILES/mvimrc
+  " Local settings
+  if filereadable(expand(expand("$VIMFILES/local.vimrc")))
+    source $VIMFILES/local.vimrc
   endif
 
   " GUI settings
