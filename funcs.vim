@@ -93,3 +93,13 @@ func! My_reindent(old, new)
   exe 'set ts=' . a:new . ' sts=' . a:new . ' et'
   retab!
 endfunc
+
+func! My_toggleVirtualEdit()
+  if &virtualedit == 'all'
+    set virtualedit=block
+    echo 'Virtual Edit off'
+  else
+    set virtualedit=all
+    echo 'Virtual Edit on'
+  endif
+endfunc

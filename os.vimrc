@@ -4,8 +4,8 @@ if has('win32')
   let g:Git_VIMRUNTIME = '/c/Program Files/Git/usr/share/vim/vim80'
   let g:Git_EXE = 'C:\Program Files\Git\git-bash.exe'
 
-  nnoremap <silent> <F9> :!start explorer.exe /select,%:p<CR>
-  nnoremap <silent> <F10> :call OpenGitBashHere()<CR>
+  nnoremap <silent> <Leader>.7 :!start explorer.exe /select,%:p<CR>
+  nnoremap <silent> <Leader>.6 :call OpenGitBashHere()<CR>
   func! OpenGitBashHere()
     let tmpVRT = $VIMRUNTIME
     let $VIMRUNTIME = g:Git_VIMRUNTIME

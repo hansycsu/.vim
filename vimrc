@@ -155,6 +155,8 @@ exe "colo " . s:ColorScheme
   nnoremap S :wa<CR>
   noremap zm zM
   noremap zr zR
+  noremap zM zm
+  noremap zR zr
   nnoremap <CR> o<C-u><Esc>
   if has('unix')
     vnoremap <C-c> "+y
@@ -189,6 +191,7 @@ exe "colo " . s:ColorScheme
 " Function Key {{{
   nnoremap <F1> :tab h 
   nnoremap <silent> <F2> :se hls!<CR>
+  vnoremap <silent> <F2> :<C-u>se hls!<CR>gv
   inoremap <silent> <F2> <C-o>:se hls!<CR>
   nnoremap <silent> <F4> :call My_editOrSaveVimrc()<CR>
   nnoremap <silent> <C-F4> :tabe $MYVIMRC<CR>
@@ -198,6 +201,8 @@ exe "colo " . s:ColorScheme
     "God like ( :exe 'set nu!' &nu ? 'rnu!' : '' )
   nnoremap <F7> :mks! ~/Session.vim<CR>
   nnoremap <F8> :so ~/Session.vim<CR>
+  nnoremap <silent> <F9> :call My_toggleVirtualEdit()<CR>
+  inoremap <silent> <F9> <C-o>:call My_toggleVirtualEdit()<CR>
   nmap <silent><F12> :call My_toggleMouse()<CR>
   vmap <silent><F12> :<C-u>call My_toggleMouse()<CR>gv
   "}}}
