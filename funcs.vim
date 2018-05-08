@@ -103,3 +103,7 @@ func! My_toggleVirtualEdit()
     echo 'Virtual Edit on'
   endif
 endfunc
+
+func! My_findDefinition(name)
+  call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+' . a:name, 'csw')
+endfunc

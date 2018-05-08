@@ -203,8 +203,8 @@ exe "colo " . s:ColorScheme
   nnoremap <F8> :so ~/Session.vim<CR>
   nnoremap <silent> <F9> :call My_toggleVirtualEdit()<CR>
   inoremap <silent> <F9> <C-o>:call My_toggleVirtualEdit()<CR>
-  nmap <silent><F12> :call My_toggleMouse()<CR>
-  vmap <silent><F12> :<C-u>call My_toggleMouse()<CR>gv
+  nmap <silent> <F12> :call My_toggleMouse()<CR>
+  vmap <silent> <F12> :<C-u>call My_toggleMouse()<CR>gv
   "}}}
 " Buffer Control {{{
   nnoremap <C-q> <C-^>
@@ -234,10 +234,10 @@ exe "colo " . s:ColorScheme
   nnoremap <silent> <C-n> :tabnew<CR>
   "}}}
 " Quick Fix {{{
-  nnoremap <silent><Leader>cw :cw<CR>
-  nnoremap <silent><Leader>cn :cn<CR>
-  nnoremap <silent><Leader>cp :cp<CR>
-  nnoremap <silent><Leader>cc :call setqflist([])<CR>
+  nnoremap <silent> <Leader>cw :cw<CR>
+  nnoremap <silent> <Leader>cn :cn<CR>
+  nnoremap <silent> <Leader>cp :cp<CR>
+  nnoremap <silent> <Leader>cc :call setqflist([])<CR>
   "}}}
 " Complex Remapping & Scripts {{{
   vnoremap <silent> * :<C-u>
@@ -247,6 +247,7 @@ exe "colo " . s:ColorScheme
       \gV:call setreg('"', old_reg, old_regtype)<CR>
 
   vnoremap <Leader>q1 :call My_addAroundSelected()<CR>
+  nnoremap <silent> <Leader>fd :call My_findDefinition(expand('<cword>'))<CR>
   "}}}
 "}}}
 " Matching color and mapping {{{
