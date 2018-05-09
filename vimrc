@@ -248,12 +248,13 @@ exe "colo " . s:ColorScheme
 
   vnoremap <Leader>q1 :call My_addAroundSelected()<CR>
   nnoremap <silent> <Leader>fd :call My_findDefinition(expand('<cword>'))<CR>
+  nnoremap <silent> <Leader>fv :vimgrep /<C-r>// %<CR>:cw<CR>
   "}}}
 "}}}
 " Matching color and mapping {{{
   hi MyMatch ctermbg=DarkGreen guibg=DarkGreen ctermfg=White guifg=White
-  hi MyMatch2 ctermbg=DarkBlue guibg=DarkGreen ctermfg=White guifg=White
-  hi MyMatch3 ctermbg=DarkRed guibg=DarkGreen ctermfg=White guifg=White
+  hi MyMatch2 ctermbg=DarkBlue guibg=DarkBlue  ctermfg=White guifg=White
+  hi MyMatch3 ctermbg=DarkRed guibg=DarkRed  ctermfg=White guifg=White
   nmap <silent> <Leader>mm :match MyMatch /\<<C-r>=expand('<cword>')<CR>\>/<CR>
   nmap <silent> <Leader>m1 :match MyMatch /\<<C-r>=expand('<cword>')<CR>\>/<CR>
   nmap <silent> <Leader>m2 :match MyMatch2 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
