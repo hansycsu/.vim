@@ -20,7 +20,7 @@ noremap , <Leader>
 
 " Encoding & Interface {{{
 set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,taiwan,prc,japan,latin1
+set fileencodings=ucs-bom,utf-8,big5,cp950,taiwan,cp936,prc,cp932,japan,latin1
 set wildmenu
 set laststatus=2
 set statusline=[%t%r]\ [%{&ff}\|%{&fenc}]
@@ -48,6 +48,7 @@ Plugin 'artoj/qmake-syntax-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'godlygeek/tabular'
 "------ Install Manually ------
 Plugin 'manually_VisIncr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
