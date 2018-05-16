@@ -124,6 +124,7 @@ set sessionoptions-=options
 set sessionoptions+=localoptions
 set ignorecase smartcase
 set textwidth=80
+set formatoptions-=t
 set backspace=indent,start
 set foldmethod=marker
 set incsearch
@@ -181,9 +182,9 @@ exe "colo " . s:ColorScheme
   "}}}
 " Commands {{{
   if has('unix')
-    command! CopyAllInBuffer normal gg'+yG<c-o><c-o>
+    command! CopyAllInBuffer %yank +
   else
-    command! CopyAllInBuffer normal gg'*yG<c-o><c-o>
+    command! CopyAllInBuffer %yank *
   endif
   command! CD cd %:p:h
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
@@ -249,7 +250,7 @@ exe "colo " . s:ColorScheme
 
   vnoremap <Leader>q1 :call My_addAroundSelected()<CR>
   nnoremap <silent> <Leader>fd :call My_findDefinition(expand('<cword>'))<CR>
-  nnoremap <silent> <Leader>fv :vimgrep /<C-r>// %<CR>:cw<CR>
+  nnoremap <Leader>fv :vimgrep // % \| cw<Left><Left><Left><Left><Left><Left><Left><Left>
   "}}}
 "}}}
 " Matching color and mapping {{{
