@@ -189,6 +189,8 @@ exe "colo " . s:ColorScheme
   command! CD cd %:p:h
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
   command! -register CopyMatches call My_copyMatches(<q-reg>)
+  command! -nargs=1 FindDefinition call My_findDefinitionAll(<f-args>)
+  command! -nargs=1 Vgrep vimgrep /<args>/j % | cw
   "}}}
 " Function Key {{{
   nnoremap <F1> :tab h 
@@ -250,7 +252,6 @@ exe "colo " . s:ColorScheme
 
   vnoremap <Leader>q1 :call My_addAroundSelected()<CR>
   nnoremap <silent> <Leader>fd :call My_findDefinition(expand('<cword>'))<CR>
-  nnoremap <Leader>fv :vimgrep // % \| cw<Left><Left><Left><Left><Left><Left><Left><Left>
   "}}}
 "}}}
 " Matching color and mapping {{{

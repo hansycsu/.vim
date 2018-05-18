@@ -107,3 +107,9 @@ endfunc
 func! My_findDefinition(name)
   call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+' . a:name, 'csw')
 endfunc
+
+func! My_findDefinitionAll(name)
+  let pattern = '\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+' . a:name
+  exe 'vimgrep /' . pattern . '/j %'
+  cwindow
+endfunc
