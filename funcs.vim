@@ -113,3 +113,36 @@ func! My_findDefinitionAll(name)
   exe 'vimgrep /' . pattern . '/j %'
   cwindow
 endfunc
+
+func! My_whichFunction()
+  if search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+\s*\(', 'bcn')
+    if g:whichFunctionOpenNewWindow
+      split
+    else
+      " record current state
+      let winPosCurr = winnr()
+      let lineNum = line('.')
+      let fileCurr = @%
+
+      " try to jump to the above window
+      wincmd k
+
+      " if no window above (no move)
+      if winPosCurr == winnr()
+        split
+
+      " now focus on above window
+      else
+        " if the file window opens is not current file
+        if @% != fileCurr
+          exe 'edit ' . fileCurr
+        endif
+        " let view window jump to current line
+        exe lineNum
+      endif
+    endif
+    resize 1
+    call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+\(', 'bc')
+    wincmd p
+  endif
+endfunc
