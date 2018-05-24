@@ -125,7 +125,7 @@ set sessionoptions+=localoptions
 set ignorecase smartcase
 set textwidth=80
 set formatoptions-=t
-set backspace=indent,start
+set backspace=indent,start,eol
 set foldmethod=marker
 set incsearch
 set virtualedit=block
@@ -159,7 +159,6 @@ exe "colo " . s:ColorScheme
   noremap zr zR
   noremap zM zm
   noremap zR zr
-  nnoremap <CR> o<C-u><Esc>
   if has('unix')
     vnoremap <C-c> "+y
     vnoremap <C-v> "+p
@@ -191,6 +190,7 @@ exe "colo " . s:ColorScheme
   command! -register CopyMatches call My_copyMatches(<q-reg>)
   command! -nargs=1 FindDefinition call My_findDefinitionAll(<f-args>)
   command! -nargs=1 Vgrep vimgrep /<args>/j % | cw
+  autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
   "}}}
 " Function Key {{{
   nnoremap <F1> :tab h 
@@ -250,10 +250,21 @@ exe "colo " . s:ColorScheme
 
   vnoremap <Leader>q1 :call My_addAroundSelected()<CR>
   nnoremap <silent> <Leader>ve :call My_toggleVirtualEdit()<CR>
-  inoremap <silent> <Leader>ve <C-o>:call My_toggleVirtualEdit()<CR>
   nnoremap <silent> <Leader>fd :call My_findDefinition(expand('<cword>'))<CR>
-  nmap <silent> <Leader>wf :call My_whichFunction()<CR>
   let g:whichFunctionOpenNewWindow = 0
+  nmap <silent> <Leader>wf :call My_whichFunction()<CR>
+  nnoremap <silent> <CR> :<C-u>call Inline_addNewLines(v:count)<CR>
+    func! Inline_addNewLines(count)
+      if a:count == 0
+        put = ''
+      else
+        let i = 0
+        while i < a:count
+          put = ''
+          let i += 1
+        endwhile
+      endif
+    endfunc
   "}}}
 "}}}
 " Matching color and mapping {{{
