@@ -49,6 +49,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/tabular'
+Plugin 'Yggdroot/indentLine'
 "------ Install Manually ------
 Plugin 'manually_VisIncr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
@@ -109,6 +110,11 @@ Plugin 'manually_taglist', {'pinned': 1}
   imap <expr> <Tab> emmet#expandAbbrIntelligent("\<Tab>")
   vmap <Tab> <C-\>,
   let g:emmet_html5 = 0
+  "}}}
+" IndentLine Setting {{{
+  let g:indentLine_char = '▏'
+  let g:indentLine_enabled = 0
+  nnoremap <silent> <F9> :IndentLinesToggle<CR>
   "}}}
 "}}}
 " ****** Basic Setting****** {{{
@@ -178,6 +184,8 @@ exe "colo " . s:ColorScheme
   endif
   nmap <Left> zh
   nmap <Right> zl
+  noremap! <C-r>' <C-r>"
+  noremap! <C-r><C-o>' <C-r><C-o>"
   "}}}
 " Commands {{{
   if has('unix')
@@ -190,6 +198,10 @@ exe "colo " . s:ColorScheme
   command! -register CopyMatches call My_copyMatches(<q-reg>)
   command! -nargs=1 FindDefinition call My_findDefinitionAll(<f-args>)
   command! -nargs=1 Vgrep vimgrep /<args>/j % | cw
+  command! -nargs=+ -complete=command Windo call My_windo(<q-args>)
+  command! -nargs=+ -complete=command Windofast noautocmd call My_windo(<q-args>)
+  command! -nargs=+ -complete=command Bufdo call My_bufdo(<q-args>)
+
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
   "}}}
 " Function Key {{{
@@ -200,6 +212,7 @@ exe "colo " . s:ColorScheme
   nnoremap <silent> <F4> :call My_editOrSaveVimrc()<CR>
   nnoremap <silent> <C-F4> :tabe $MYVIMRC<CR>
   nnoremap <silent> <S-F4> :tabe $MYVIMRC<CR>
+  nnoremap <silent> <S-F4> :tabe $VIMFILES/local.vimrc<CR>
   nnoremap <silent> <F6> :exe &nu?'se nu! rnu':'se nu nornu'<CR>
   inoremap <silent> <F6> <C-o>:exe &nu?'se nu! rnu':'se nu nornu'<CR>
     "God like ( :exe 'set nu!' &nu ? 'rnu!' : '' )
@@ -271,11 +284,11 @@ exe "colo " . s:ColorScheme
   hi MyMatch ctermbg=DarkGreen guibg=DarkGreen ctermfg=White guifg=White
   hi MyMatch2 ctermbg=DarkBlue guibg=DarkBlue  ctermfg=White guifg=White
   hi MyMatch3 ctermbg=DarkRed guibg=DarkRed  ctermfg=White guifg=White
-  nmap <silent> <Leader>mm :match MyMatch /\<<C-r>=expand('<cword>')<CR>\>/<CR>
-  nmap <silent> <Leader>m1 :match MyMatch /\<<C-r>=expand('<cword>')<CR>\>/<CR>
-  nmap <silent> <Leader>m2 :match MyMatch2 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
-  nmap <silent> <Leader>m3 :match MyMatch3 /\<<C-r>=expand('<cword>')<CR>\>/<CR>
-  nmap <silent> <Leader>mc :match<CR>
+  nmap <silent> <Leader>mm :Windo match MyMatch /<C-r><C-w>/<CR>
+  nmap <silent> <Leader>m1 :Windo match MyMatch /<C-r><C-w>/<CR>
+  nmap <silent> <Leader>m2 :Windo match MyMatch2 /<C-r><C-w>/<CR>
+  nmap <silent> <Leader>m3 :Windo match MyMatch3 /<C-r><C-w>/<CR>
+  nmap <silent> <Leader>mc :Windo match<CR>
 "}}}
 " Others {{{
 " Backup & Swap

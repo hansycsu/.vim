@@ -146,3 +146,17 @@ func! My_whichFunction()
     wincmd p
   endif
 endfunc
+
+" Just like windo, but restore the current window when done.
+func! My_windo(command)
+  let currwin=winnr()
+  exe 'windo ' . a:command
+  exe currwin . 'wincmd w'
+endfunc
+
+" Just like bufdo, but restore the current buffer when done.
+func! My_bufdo(command)
+  let currBuff=bufnr("%")
+  exe 'bufdo ' . a:command
+  exe 'buffer ' . currBuff
+endfunc
