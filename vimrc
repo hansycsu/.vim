@@ -53,6 +53,7 @@ Plugin 'Yggdroot/indentLine'
 "------ Install Manually ------
 Plugin 'manually_VisIncr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
+Plugin 'manually_YCSign', {'pinned': 1}
 "------------------------------
 " Vundle Initialization Finish {{{
   call vundle#end()
@@ -126,6 +127,7 @@ syntax on
 set hls
 set hidden
 set listchars+=tab:>-
+set listchars+=space:.
 set sessionoptions-=options
 set sessionoptions+=localoptions
 set ignorecase smartcase
@@ -284,10 +286,10 @@ exe "colo " . s:ColorScheme
   hi MyMatch ctermbg=DarkGreen guibg=DarkGreen ctermfg=White guifg=White
   hi MyMatch2 ctermbg=DarkBlue guibg=DarkBlue  ctermfg=White guifg=White
   hi MyMatch3 ctermbg=DarkRed guibg=DarkRed  ctermfg=White guifg=White
-  nmap <silent> <Leader>mm :Windo match MyMatch /<C-r><C-w>/<CR>
-  nmap <silent> <Leader>m1 :Windo match MyMatch /<C-r><C-w>/<CR>
-  nmap <silent> <Leader>m2 :Windo match MyMatch2 /<C-r><C-w>/<CR>
-  nmap <silent> <Leader>m3 :Windo match MyMatch3 /<C-r><C-w>/<CR>
+  nmap <silent> <Leader>mm :Windo match MyMatch /\<<C-r><C-w>\>/<CR>
+  nmap <silent> <Leader>m1 :Windo match MyMatch /\<<C-r><C-w>\>/<CR>
+  nmap <silent> <Leader>m2 :Windo match MyMatch2 /\<<C-r><C-w>\>/<CR>
+  nmap <silent> <Leader>m3 :Windo match MyMatch3 /\<<C-r><C-w>\>/<CR>
   nmap <silent> <Leader>mc :Windo match<CR>
 "}}}
 " Others {{{
