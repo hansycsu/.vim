@@ -1,0 +1,25 @@
+if has('win32')
+  set guioptions=M
+  set guifont=DejaVu_Sans_Mono_for_Powerline:h12
+  set guifontwide=Microsoft_YaHei_Mono:h12
+
+  func! My_changeGuiFontSize(fontsize)
+    exe 'set guifont=DejaVu_Sans_Mono_for_Powerline:h' . a:fontsize
+    exe 'set guifontwide=Microsoft_YaHei_Mono:h' . a:fontsize
+  endfunc
+endif
+
+if has('unix')
+  " e: GUI tab bar, L: left scroll bar
+  set guioptions-=e
+  set guioptions-=L
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+  set guifontwide=Microsoft\ YaHei\ Mono\ 12
+
+  func! My_changeGuiFontSize(fontsize)
+    exe 'set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ ' . a:fontsize
+    exe 'set guifontwide=Microsoft\ YaHei\ Mono\ ' . a:fontsize
+  endfunc
+endif
+
+command! -nargs=1 FontSize call My_changeGuiFontSize(<f-args>)
