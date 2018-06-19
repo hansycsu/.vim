@@ -188,6 +188,7 @@ exe "colo " . s:ColorScheme
   nmap <Right> zl
   noremap! <C-r>' <C-r>"
   noremap! <C-r><C-o>' <C-r><C-o>"
+  map <Leader><Space> s<Space><Space><Esc>P
   "}}}
 " Commands {{{
   if has('unix')

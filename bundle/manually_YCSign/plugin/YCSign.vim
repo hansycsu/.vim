@@ -94,6 +94,7 @@ func! YCSignList()
   endif
   for lineNr in g:YCSignList[bufNr]
     let lineStr = getline(lineNr)
+    let lineStr = substitute(lineStr, '^\s\+', '',  '')
     echo printf('%-6d%s', lineNr, lineStr)
   endfor
 endfunc
