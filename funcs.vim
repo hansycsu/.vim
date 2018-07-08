@@ -115,7 +115,7 @@ func! My_findDefinitionAll(name)
 endfunc
 
 func! My_whichFunction()
-  if search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+\s*\(', 'bcn')
+  if search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+(if)@<!\s*\(', 'bcn')
     if g:whichFunctionOpenNewWindow
       split
     else
@@ -142,7 +142,7 @@ func! My_whichFunction()
       endif
     endif
     resize 1
-    call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+\(', 'bc')
+    call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+(if)@<!\s*\(', 'bc')
     wincmd p
   endif
 endfunc
