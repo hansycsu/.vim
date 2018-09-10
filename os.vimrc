@@ -31,4 +31,6 @@ if has('unix') && !has('gui_running')
   exe "set <F13>=\e[1;5S"
   map <F13> <C-F4>
   map! <F13> <C-F4>
+  autocmd VimLeave * call system("xsel -ib", getreg('+'))
+  autocmd VimLeave * call system("xsel -i", getreg('*'))
 endif
