@@ -146,6 +146,7 @@ set linebreak
 set breakat-=_
 set sidescroll=1
 exe "colo " . s:ColorScheme
+set nofixeol
 "}}}
 " Mappings {{{
 " Simple Remapping {{{
