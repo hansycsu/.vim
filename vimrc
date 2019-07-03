@@ -216,7 +216,6 @@ set nofixeol
   inoremap <silent> <F2> <C-o>:se hls!<CR>
   nnoremap <silent> <F4> :call My_editOrSaveVimrc()<CR>
   nnoremap <silent> <C-F4> :tabe $MYVIMRC<CR>
-  nnoremap <silent> <S-F4> :tabe $MYVIMRC<CR>
   nnoremap <silent> <S-F4> :tabe $VIMFILES/local.vimrc<CR>
   nnoremap <silent> <F6> :exe &nu?'se nu! rnu':'se nu nornu'<CR>
   inoremap <silent> <F6> <C-o>:exe &nu?'se nu! rnu':'se nu nornu'<CR>

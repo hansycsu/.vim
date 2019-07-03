@@ -105,17 +105,17 @@ func! My_toggleVirtualEdit()
 endfunc
 
 func! My_findDefinition(name)
-  call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+' . a:name, 'csw')
+  call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+(\w+::)?' . a:name, 'csw')
 endfunc
 
 func! My_findDefinitionAll(name)
-  let pattern = '\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+' . a:name
+  let pattern = '\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+(\w+::)?' . a:name
   exe 'vimgrep /' . pattern . '/j %'
   cwindow
 endfunc
 
 func! My_whichFunction()
-  if search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+(if)@<!\s*\(', 'bcn')
+  if search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+(\w+::)?\w+(if)@<!\s*\(', 'bcn')
     if g:whichFunctionOpenNewWindow
       split
     else
@@ -142,7 +142,7 @@ func! My_whichFunction()
       endif
     endif
     resize 1
-    call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+\w+(if)@<!\s*\(', 'bc')
+    call search('\v^[\t ]*(\w+[\t <>*:,&^]+)*\w+[\t >*&^]+(\w+::)?\w+(if)@<!\s*\(', 'bc')
     wincmd p
   endif
 endfunc
