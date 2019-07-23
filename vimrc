@@ -108,8 +108,8 @@ Plugin 'manually_YCSign', {'pinned': 1}
   "}}}
 " Emmet Setting {{{
   let g:user_emmet_leader_key='<C-\>'
-  imap <expr> <Tab> emmet#expandAbbrIntelligent("\<Tab>")
-  vmap <Tab> <C-\>,
+  "imap <expr> <Tab> emmet#expandAbbrIntelligent("\<Tab>")
+  "vmap <Tab> <C-\>,
   let g:emmet_html5 = 0
   "}}}
 " IndentLine Setting {{{
@@ -147,6 +147,7 @@ set breakat-=_
 set sidescroll=1
 exe "colo " . s:ColorScheme
 set nofixeol
+set cinoptions=l1
 "}}}
 " Mappings {{{
 " Simple Remapping {{{
