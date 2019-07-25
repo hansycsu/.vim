@@ -54,6 +54,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'manually_VisIncr', {'pinned': 1}
 Plugin 'manually_taglist', {'pinned': 1}
 Plugin 'manually_YCSign', {'pinned': 1}
+Plugin 'manually_MRU_Tab', {'pinned': 1}
 "------------------------------
 " Vundle Initialization Finish {{{
   call vundle#end()
