@@ -12,6 +12,8 @@ func! MRU_Tab_switch()
   let s:currTab = tabpagenr()
   if (g:MRU_Tab_index <= s:lastTab) && (g:MRU_Tab_index != s:currTab)
     exe 'tabn' g:MRU_Tab_index
+  else
+    tabnext
   endif
 endfunc
 

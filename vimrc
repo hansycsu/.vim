@@ -89,6 +89,8 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
 " CtrlP Setting {{{
   let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line']
   let g:ctrlp_working_path_mode = 0
+  " MpSdk2015 Ignore files for CtrlP
+  " let g:ctrlp_custom_ignore = {'dir':  '\v[\/](Release)$', 'file': '\v\.(resx|user|sln|rc|ncb|suo|dll)$'}
   nnoremap zp :CtrlP
   nnoremap zpt :CtrlPTag<CR>
   nnoremap zpb :CtrlPBufTag<CR>
@@ -149,6 +151,8 @@ set sidescroll=1
 exe "colo " . s:ColorScheme
 set nofixeol
 set cinoptions=l1
+set cinkeys-=0#
+set scrolloff=0
 "}}}
 " Mappings {{{
 " Simple Remapping {{{
@@ -193,6 +197,7 @@ set cinoptions=l1
   noremap! <C-r><C-o>' <C-r><C-o>"
   map <Leader><Space> s<Space><Space><Esc>P
   map <Leader>yg :CopyAllInBuffer<CR>
+  noremap zZ zszH
   "}}}
 " Commands {{{
   if has('unix')
