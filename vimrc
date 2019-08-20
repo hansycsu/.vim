@@ -67,7 +67,6 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#tab_nr_type = 1
   let g:airline#extensions#tabline#buffer_idx_mode = 1
-  let g:airline#extensions#wordcount#enabled = 0
   let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr}%4l:%3v'
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
