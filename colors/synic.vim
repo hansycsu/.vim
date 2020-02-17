@@ -62,7 +62,7 @@ hi Cursor guibg=Lavender guifg=Black ctermfg=16 ctermbg=255
 hi lCursor guibg=Lavender guifg=Black ctermfg=16 ctermbg=255
 hi Directory guifg=LightGreen guibg=bg ctermfg=120 ctermbg=NONE
 hi LineNr guifg=LightBlue3 guibg=#121212 ctermfg=110 ctermbg=233
-hi CursorLineNr gui=bold guifg=Yellow guibg=#121212 term=bold ctermfg=11 ctermbg=233
+hi CursorLineNr gui=bold guifg=Yellow guibg=#121212 cterm=bold term=bold ctermfg=11 ctermbg=233
 hi MoreMsg gui=NONE guifg=SeaGreen guibg=bg cterm=NONE ctermfg=29 ctermbg=NONE
 hi NonText gui=NONE guifg=Cyan4 guibg=Black cterm=NONE ctermfg=30 ctermbg=NONE
 hi Question gui=NONE guifg=LimeGreen guibg=bg cterm=NONE ctermfg=77 ctermbg=NONE
