@@ -168,6 +168,7 @@ set scrolloff=0
   inoremap <C-Up> <C-x><C-y>
   inoremap <C-Down> <C-x><C-e>
   noremap <C-@> @@
+  noremap <C-2> @@
   inoremap <C-j> <Esc>gUiwea
   nnoremap S :wa<CR>
   noremap zm zM
