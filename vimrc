@@ -199,6 +199,8 @@ set scrolloff=0
   map <Leader><Space> s<Space><Space><Esc>P
   map <Leader>yg :CopyAllInBuffer<CR>
   noremap zZ zszH
+  inoremap <C-q> <C-r>+
+  cnoremap <C-q> <C-r>+
   "}}}
 " Commands {{{
   if has('unix')
@@ -216,6 +218,7 @@ set scrolloff=0
   command! -nargs=+ -complete=command Bufdo call My_bufdo(<q-args>)
 
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
+  autocmd Filetype * setlocal formatoptions-=c
   "}}}
 " Function Key {{{
   nnoremap <F1> :tab h 
