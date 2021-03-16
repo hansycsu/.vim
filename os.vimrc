@@ -1,5 +1,14 @@
+" Get g:env
+if !exists('g:env')
+  if has('win64') || has('win32') || has('win16')
+    let g:env = 'WINDOWS'
+  else
+    let g:env = toupper(substitute(system('uname'), '\n', '', ''))
+  endif
+endif
+
 " For MS Windows
-if has('win32')
+if g:env =~ 'WINDOWS'
   " These path can be override in local_vimrc
   let g:Git_VIMRUNTIME = '/c/Program Files/Git/usr/share/vim/vim80'
   let g:Git_EXE = 'C:\Program Files\Git\git-bash.exe'
@@ -13,10 +22,9 @@ if has('win32')
     let $VIMRUNTIME = tmpVRT
   endfunc
   map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
-endif
 
 " For Unix like System
-if has('unix') && !has('gui_running')
+elseif g:env =~ 'LINUX' && !has('gui_running')
   exe "set <M-c>=\ec"
   exe "set <M-d>=\ed"
   exe "set <M-p>=\ep"
@@ -33,4 +41,16 @@ if has('unix') && !has('gui_running')
   map! <F13> <C-F4>
   autocmd VimLeave * call system("xsel -ib", getreg('+'))
   autocmd VimLeave * call system("xsel -i", getreg('*'))
+
+" For Cygwin
+elseif g:env =~ 'CYGWIN'
+  " Mapping for meta keys
+  nnoremap <silent> p :CtrlPLastMode<CR>
+  nnoremap <silent> d :let hans_varY=@#\|bp\|bd!#\|let @#=hans_varY\|unlet hans_varY<CR>
+  nnoremap c <C-w>c
+  nnoremap <silent> o :only<CR>
+  nnoremap , <C-w><
+  nnoremap . <C-w>>
+  nnoremap - <C-w>-
+  nnoremap = <C-w>+
 endif
