@@ -53,4 +53,10 @@ elseif g:env =~ 'CYGWIN'
   nnoremap . <C-w>>
   nnoremap - <C-w>-
   nnoremap = <C-w>+
+  exe "set <S-F4>=\e[1;2S"
+  " No option <C-F4> and we don't want to map <Esc>,
+  " so we have to magic tricks
+  exe "set <F13>=\e[1;5S"
+  map <F13> <C-F4>
+  map! <F13> <C-F4>
 endif
