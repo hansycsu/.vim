@@ -45,18 +45,20 @@ elseif g:env =~ 'LINUX' && !has('gui_running')
 " For Cygwin
 elseif g:env =~ 'CYGWIN'
   " Mapping for meta keys
-  nnoremap <silent> p :CtrlPLastMode<CR>
-  nnoremap <silent> d :let hans_varY=@#\|bp\|bd!#\|let @#=hans_varY\|unlet hans_varY<CR>
-  nnoremap c <C-w>c
-  nnoremap <silent> o :only<CR>
-  nnoremap , <C-w><
-  nnoremap . <C-w>>
-  nnoremap - <C-w>-
-  nnoremap = <C-w>+
+  exe "nnoremap <silent> \ep :CtrlPLastMode<CR>"
+  exe "nnoremap <silent> \ed :let hans_varY=@#\\|bp\\|bd!#\\|let @#=hans_varY\\|unlet hans_varY<CR>"
+  exe "nnoremap \ec <C-w>c"
+  exe "nnoremap <silent> \eo :only<CR>"
+  exe "nnoremap \e, <C-w><"
+  exe "nnoremap \e. <C-w>>"
+  exe "nnoremap \e- <C-w>-"
+  exe "nnoremap \e= <C-w>+"
   exe "set <S-F4>=\e[1;2S"
   " No option <C-F4> and we don't want to map <Esc>,
   " so we have to magic tricks
   exe "set <F13>=\e[1;5S"
   map <F13> <C-F4>
   map! <F13> <C-F4>
+  " Double Esc to timeout immediately (See :help timeout)
+  exe "nnoremap \e\e \e"
 endif
