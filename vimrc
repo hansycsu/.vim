@@ -217,6 +217,21 @@ set scrolloff=0
   command! -nargs=+ -complete=command Windofast noautocmd call My_windo(<q-args>)
   command! -nargs=+ -complete=command Bufdo call My_bufdo(<q-args>)
 
+  " Usage: Grep <pattern> <filename>
+  "          if <pattern> and <filename> contains whitespace, they must be
+  "          surrounded by single quotes
+  "          e.g. Grep 'abc de' '/abc de/my filelist.txt'
+  "          (No, we do NOT handle pattern with single quotes)
+  command! -nargs=+ Grep call My_GrepFunc(<q-args>)
+
+  " Usage: Ps <pattern>
+  "          You do not have to surround <pattern> with / ... /
+  "          There must be create_filelist.py in pwd
+  "          What create_filelist.py do:
+  "            1. Create filelist of project in a file (unix newline separated)
+  "            2. Print the path of file contains filelist
+  command! -nargs=1 Ps call My_projectSearch(<f-args>)
+
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
   autocmd Filetype * setlocal formatoptions-=c
   "}}}

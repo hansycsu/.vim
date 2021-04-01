@@ -163,3 +163,44 @@ func! My_bufdo(command)
   exe 'bufdo ' . a:command
   exe 'buffer ' . currBuff
 endfunc
+
+func! My_GrepFunc(...)
+  " Parse args
+  let qstr = a:1
+  if qstr !~ "'"
+    let args = split(qstr, '\s\+')
+  else
+    let args = split(qstr, "'")
+    let args = filter(args, 'v:val !~ "^\s\+$"')
+    let args[1] = trim(args[1])
+  endif
+  let pattern = args[0]
+  let filename = args[1]
+  call My_grepInFileList(args[0], args[1])
+endfunc
+
+" Call vimgrep with <pattern> in files listed in <filename>
+func! My_grepInFileList(pattern, filename)
+  " Process file list
+  if !filereadable(a:filename)
+    echoerr 'File not found: ' . a:filename
+    return
+  endif
+  let original_list = readfile(a:filename)
+  let readable_list = filter(original_list, 'v:val !=# "" && filereadable(v:val)')
+  let escaped_list = map(readable_list, 'fnameescape(v:val)')
+
+  " Run vimgrep
+  let file_list = join(escaped_list)
+  exec 'vimgrep /' . a:pattern . '/j ' . file_list
+  copen
+endfunc
+
+" Project search (need create_filelist.py)
+"   What create_filelist.py do:
+"     1. Create filelist of project in a file (unix newline separated)
+"     2. Print the path of file contains filelist
+func! My_projectSearch(pattern)
+  let filename = system('python create_filelist.py')
+  call My_grepInFileList(a:pattern, filename)
+endfunc
