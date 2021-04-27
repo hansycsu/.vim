@@ -151,7 +151,6 @@ set sidescroll=1
 exe "colo " . s:ColorScheme
 set nofixeol
 set cinoptions=l1
-set cinkeys-=0#
 set scrolloff=0
 "}}}
 " Mappings {{{
