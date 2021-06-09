@@ -201,6 +201,6 @@ endfunc
 "     1. Create filelist of project in a file (unix newline separated)
 "     2. Print the path of file contains filelist
 func! My_projectSearch(pattern)
-  let filename = system('python create_filelist.py')
+  let filename = system('python3 create_filelist.py')
   call My_grepInFileList(a:pattern, filename)
 endfunc
