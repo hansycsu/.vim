@@ -233,6 +233,7 @@ set scrolloff=0
 
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
   autocmd Filetype * setlocal formatoptions-=c
+  autocmd BufRead,BufNewFile *.cmm set filetype=cmm
   "}}}
 " Function Key {{{
   nnoremap <F1> :tab h 
