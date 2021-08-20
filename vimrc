@@ -243,7 +243,7 @@ set scrolloff=0
   nnoremap <silent> <F4> :call My_editOrSaveVimrc()<CR>
   nnoremap <silent> <C-F4> :tabe $MYVIMRC<CR>
   nnoremap <silent> <S-F4> :tabe $VIMFILES/local.vimrc<CR>
-  nnoremap <silent> <F6> :exe &nu?'se nu! rnu':'se nu nornu'<CR>
+  nnoremap <silent> <F6> :exe &rnu?'se nu nornu':'se nonu rnu'<CR>
   inoremap <silent> <F6> <C-o>:exe &nu?'se nu! rnu':'se nu nornu'<CR>
     "God like ( :exe 'set nu!' &nu ? 'rnu!' : '' )
   nnoremap <F7> :mks! ~/Session.vim<CR>
