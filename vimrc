@@ -204,8 +204,10 @@ set scrolloff=0
 " Commands {{{
   if has('unix')
     command! CopyAllInBuffer %yank +
+    command! CopyFilePath let @+=expand('%:p')
   else
     command! CopyAllInBuffer %yank *
+    command! CopyFilePath let @*=expand('%:p')
   endif
   command! CD cd %:p:h
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
