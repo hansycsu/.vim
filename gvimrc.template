@@ -3,6 +3,10 @@ if has('win32')
   set guifont=DejaVu_Sans_Mono_for_Powerline:h12
   set guifontwide=Microsoft_YaHei_Mono:h12
 
+  " Set initial window size and position
+  set lines=41 columns=120
+  winpos 352 111
+
   func! My_changeGuiFontSize(fontsize)
     exe 'set guifont=DejaVu_Sans_Mono_for_Powerline:h' . a:fontsize
     exe 'set guifontwide=Microsoft_YaHei_Mono:h' . a:fontsize
