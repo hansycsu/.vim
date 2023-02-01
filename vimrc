@@ -313,14 +313,20 @@ set scrolloff=0
   "}}}
 "}}}
 " Matching color and mapping {{{
-  hi MyMatch ctermbg=DarkGreen guibg=DarkGreen ctermfg=White guifg=White
+  hi MyMatch1 ctermbg=DarkGreen guibg=DarkGreen ctermfg=White guifg=White
   hi MyMatch2 ctermbg=DarkBlue guibg=DarkBlue  ctermfg=White guifg=White
   hi MyMatch3 ctermbg=DarkRed guibg=DarkRed  ctermfg=White guifg=White
-  nmap <silent> <Leader>mm :Windo match MyMatch /\<<C-r><C-w>\>/<CR>
-  nmap <silent> <Leader>m1 :Windo match MyMatch /\<<C-r><C-w>\>/<CR>
-  nmap <silent> <Leader>m2 :Windo match MyMatch2 /\<<C-r><C-w>\>/<CR>
-  nmap <silent> <Leader>m3 :Windo match MyMatch3 /\<<C-r><C-w>\>/<CR>
-  nmap <silent> <Leader>mc :Windo match<CR>
+  nmap <Leader>mm :Windo call matchadd('MyMatch1', '')<Left><Left>
+  nmap <silent> <Leader>m1 :Windo call matchadd('MyMatch1', '\<<C-r><C-w>\>')<CR>
+  nmap <silent> <Leader>m2 :Windo call matchadd('MyMatch2', '\<<C-r><C-w>\>')<CR>
+  nmap <silent> <Leader>m3 :Windo call matchadd('MyMatch3', '\<<C-r><C-w>\>')<CR>
+  nmap <silent> <Leader>mc :Windo call Inline_removeAllMatches()<CR>
+    func! Inline_removeAllMatches()
+      let l:matches = getmatches()
+      for i in l:matches
+        call matchdelete(i.id)
+      endfor
+    endfunc
 "}}}
 " Others {{{
 " Backup & Swap
