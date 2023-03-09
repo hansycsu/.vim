@@ -317,14 +317,18 @@ set scrolloff=0
   hi MyMatch2 ctermbg=DarkBlue guibg=DarkBlue  ctermfg=White guifg=White
   hi MyMatch3 ctermbg=DarkRed guibg=DarkRed  ctermfg=White guifg=White
   nmap <Leader>mm :Windo call matchadd('MyMatch1', '')<Left><Left>
+  nmap <Leader>md :call Inline_showAllMatches()<CR>:call matchdelete()<Left>
   nmap <silent> <Leader>m1 :Windo call matchadd('MyMatch1', '\<<C-r><C-w>\>')<CR>
   nmap <silent> <Leader>m2 :Windo call matchadd('MyMatch2', '\<<C-r><C-w>\>')<CR>
   nmap <silent> <Leader>m3 :Windo call matchadd('MyMatch3', '\<<C-r><C-w>\>')<CR>
-  nmap <silent> <Leader>mc :Windo call Inline_removeAllMatches()<CR>
-    func! Inline_removeAllMatches()
+  nmap <silent> <Leader>mc :Windo call clearmatches()<CR>
+  nmap <silent> <Leader>ml :call Inline_showAllMatches()<CR>
+    func! Inline_showAllMatches()
       let l:matches = getmatches()
       for i in l:matches
-        call matchdelete(i.id)
+        if has_key(i, 'pattern')
+          echo i.id . "\t/" . i.pattern . '/'
+        endif
       endfor
     endfunc
 "}}}
