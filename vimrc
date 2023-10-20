@@ -210,6 +210,8 @@ set scrolloff=0
     command! CopyFilePath let @*=expand('%:p')
   endif
   command! CD cd %:p:h
+  command! DiffIgnoreWhite set diffopt+=iwhite
+  command! ShowFileModificationTime echo strftime('%Y-%m-%d %H:%M:%S',getftime(expand('%')))
   command! -nargs=1 SearchBuf call My_searchInAllBuffer(<f-args>)
   command! -register CopyMatches call My_copyMatches(<q-reg>)
   command! -nargs=1 FindDefinition call My_findDefinitionAll(<f-args>)
