@@ -152,6 +152,7 @@ exe "colo " . s:ColorScheme
 set nofixeol
 set cinoptions=l1
 set scrolloff=0
+set foldtext=My_foldText()
 "}}}
 " Mappings {{{
 " Simple Remapping {{{

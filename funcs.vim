@@ -204,3 +204,17 @@ func! My_projectSearch(pattern)
   let filename = system('python3 create_filelist.py')
   call My_grepInFileList(a:pattern, filename)
 endfunc
+
+" Display foldtext with original text and indentation level
+func! My_foldText()
+    let line = getline(v:foldstart)
+    let spaceEndIdx = match(line, '^\s*\zs')
+    if spaceEndIdx == 0
+        return line
+    endif
+    let spaceStr = line[0:spaceEndIdx-1]
+    let textStr = line[spaceEndIdx:]
+    let spaceStr = substitute(spaceStr, '\t', repeat(' ', &tabstop), 'g')
+    let spaceStr = substitute(spaceStr, ' ', '-', 'g')
+    return spaceStr . textStr
+endfunc
