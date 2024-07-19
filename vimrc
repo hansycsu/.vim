@@ -120,6 +120,27 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   let g:indentLine_enabled = 0
   nnoremap <silent> <F9> :IndentLinesToggle<CR>
   "}}}
+" cscope Setting {{{
+  if has("cscope")
+    set cscopetag
+    set cscopetagorder=0
+    if filereadable("cscope.out")
+      cs add cscope.out   
+    elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+    endif
+    set cscopeverbose
+    nmap xh :cs help<CR>
+    nmap xs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap xg :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap xc :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap xt :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap xe :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap xd :cs find d <C-R>=expand("<cword>")<CR><CR>
+  endif
+  "}}}
 "}}}
 " ****** Basic Setting****** {{{
 set nonumber rnu
@@ -201,6 +222,7 @@ set foldtext=My_foldText()
   noremap zZ zszH
   inoremap <C-q> <C-r>+
   cnoremap <C-q> <C-r>+
+  cnoreabbrev cvim vim//j **/*.c **/*.h **/*.cpp **/*.hpp<Home><Right><Right><Right>
   "}}}
 " Commands {{{
   if has('unix')
