@@ -22,6 +22,9 @@ noremap , <Leader>
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,cp950,taiwan,cp936,prc,cp932,japan,latin1
 set wildmenu
+if v:version >= 900
+  set wildoptions+=pum
+endif
 set laststatus=2
 set statusline=[%t%r]\ [%{&ff}\|%{&fenc}]
               \%=(%c,\ %l)\ --\ %P\ --\ \ [lines:\ %L]
