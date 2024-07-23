@@ -124,21 +124,25 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   if has("cscope")
     set cscopetag
     set cscopetagorder=0
-    if filereadable("cscope.out")
-      cs add cscope.out   
-    elseif $CSCOPE_DB != ""
+    let g:cscope#dbpath = findfile('.ycsu/cscope.out', '.;')
+    if !empty(g:cscope#dbpath)
+      let g:cscope#dbpath = fnamemodify(g:cscope#dbpath, ':p')
+      exe 'cd ' . fnamemodify(g:cscope#dbpath, ':h')
+      cs add cscope.out
+    elseif !empty($CSCOPE_DB)
       cs add $CSCOPE_DB
+      let g:cscope#dbpath = fnamemodify($CSCOPE_DB, ':p')
     endif
-    set cscopeverbose
-    nmap xh :cs help<CR>
-    nmap xs :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap xg :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap xc :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap xt :cs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap xe :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap xd :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <Leader>xh :cs help<CR>
+    nmap <Leader>xs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <Leader>xg :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <Leader>xc :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap gc         :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <Leader>xt :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <Leader>xe :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <Leader>xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <Leader>xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <Leader>xd :cs find d <C-R>=expand("<cword>")<CR><CR>
   endif
   "}}}
 "}}}
