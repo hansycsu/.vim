@@ -181,7 +181,9 @@ set foldtext=My_foldText()
 "}}}
 " Mappings {{{
 " Simple Remapping {{{
-  nnoremap Q gQ
+  if !empty(maparg('Q'))
+    unmap Q
+  endif
   nnoremap QQ :qa<CR>
   nnoremap Y y$
   "noremap <expr> j (v:count == 0 ? 'gj' : 'j')
