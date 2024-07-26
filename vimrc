@@ -91,7 +91,12 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   "}}}
 " CtrlP Setting {{{
   let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line']
-  let g:ctrlp_working_path_mode = 0
+  " g:ctrlp_working_path_mode
+  "   r: Search project root dir (which contains .git)
+  "   a: If no .git dir, use current file path
+  "   w: Search project root from cwd, not file path
+  "   Disable these: let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_working_path_mode = 'raw'
   " MpSdk2015 Ignore files for CtrlP
   " let g:ctrlp_custom_ignore = {'dir':  '\v[\/](Release)$', 'file': '\v\.(resx|user|sln|rc|ncb|suo|dll)$'}
   nnoremap zp :CtrlP
