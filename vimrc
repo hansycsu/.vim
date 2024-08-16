@@ -115,7 +115,7 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   map <Leader>cC <plug>NERDCommenterComment
   "}}}
 " TagList Setting {{{
-  nnoremap <silent> <F3> :TlistToggle<CR>
+  nnoremap <silent> <F3> :TlistToggle \| call Inline_initCscope()<CR>
   "}}}
 " Emmet Setting {{{
   let g:user_emmet_leader_key='<C-\>'
@@ -129,29 +129,32 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   nnoremap <silent> <F9> :IndentLinesToggle<CR>
   "}}}
 " cscope Setting {{{
-  if has("cscope")
-    set cscopetag
-    set cscopetagorder=0
-    let g:cscope#dbpath = findfile('.ycsu/cscope.out', '.;')
-    if !empty(g:cscope#dbpath)
-      let g:cscope#dbpath = fnamemodify(g:cscope#dbpath, ':p')
-      exe 'cd ' . fnamemodify(g:cscope#dbpath, ':h')
-      cs add cscope.out
-    elseif !empty($CSCOPE_DB)
-      cs add $CSCOPE_DB
-      let g:cscope#dbpath = fnamemodify($CSCOPE_DB, ':p')
+  func! Inline_initCscope()
+    if has("cscope") && !exists('g:cscope#isLoaded')
+      set cscopetag
+      set cscopetagorder=0
+      let g:cscope#dbpath = findfile('.ycsu/cscope.out', '.;')
+      if !empty(g:cscope#dbpath)
+        let g:cscope#dbpath = fnamemodify(g:cscope#dbpath, ':p')
+        exe 'cd ' . fnamemodify(g:cscope#dbpath, ':h')
+        cs add cscope.out
+      elseif !empty($CSCOPE_DB)
+        cs add $CSCOPE_DB
+        let g:cscope#dbpath = fnamemodify($CSCOPE_DB, ':p')
+      endif
+      nmap <Leader>xh :cs help<CR>
+      nmap <Leader>xs :cs find s <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xg :cs find g <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xc :cs find c <C-R>=expand("<cword>")<CR><CR>
+      nmap gc         :cs find c <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xt :cs find t <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xe :cs find e <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+      nmap <Leader>xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+      nmap <Leader>xd :cs find d <C-R>=expand("<cword>")<CR><CR>
+      let g:cscope#isLoaded = 1
     endif
-    nmap <Leader>xh :cs help<CR>
-    nmap <Leader>xs :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <Leader>xg :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <Leader>xc :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap gc         :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <Leader>xt :cs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <Leader>xe :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <Leader>xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <Leader>xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <Leader>xd :cs find d <C-R>=expand("<cword>")<CR><CR>
-  endif
+  endfunc
   "}}}
 "}}}
 " ****** Basic Setting****** {{{
