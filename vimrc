@@ -142,7 +142,7 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
         cs add $CSCOPE_DB
         let g:cscope#dbpath = fnamemodify($CSCOPE_DB, ':p')
       endif
-      nmap <Leader>xh :cs help<CR>
+      nmap <silent> <Leader>xh :cs help<CR>:echo ',xk  : Toggle connection'<CR>
       nmap <Leader>xs :cs find s <C-R>=expand("<cword>")<CR><CR>
       nmap <Leader>xg :cs find g <C-R>=expand("<cword>")<CR><CR>
       nmap <Leader>xc :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -152,7 +152,21 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
       nmap <Leader>xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
       nmap <Leader>xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
       nmap <Leader>xd :cs find d <C-R>=expand("<cword>")<CR><CR>
+      nmap <silent> <Leader>xk :call Inline_toggleCscopeConnection()<CR>
       let g:cscope#isLoaded = 1
+      let g:cscope#isConnected = 1
+    endif
+  endfunc
+
+  func! Inline_toggleCscopeConnection()
+    if exists('g:cscope#isConnected')
+      if g:cscope#isConnected
+        cs kill 0
+      else
+        exe 'cs add ' . g:cscope#dbpath
+      endif
+      let g:cscope#isConnected = !g:cscope#isConnected
+      cs show
     endif
   endfunc
   "}}}
