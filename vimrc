@@ -143,16 +143,17 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
         let g:cscope#dbpath = fnamemodify($CSCOPE_DB, ':p')
       endif
       nmap <silent> <Leader>xh :cs help<CR>:echo ',xk  : Toggle connection'<CR>
-      nmap <Leader>xs :cs find s <C-R>=expand("<cword>")<CR><CR>
-      nmap <Leader>xg :cs find g <C-R>=expand("<cword>")<CR><CR>
+      nmap <silent> <Leader>xk :call Inline_toggleCscopeConnection()<CR>
+      nmap <Leader>xa :cs find a <C-R>=expand("<cword>")<CR><CR>
       nmap <Leader>xc :cs find c <C-R>=expand("<cword>")<CR><CR>
       nmap gc         :cs find c <C-R>=expand("<cword>")<CR><CR>
-      nmap <Leader>xt :cs find t <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xd :cs find d <C-R>=expand("<cword>")<CR><CR>
       nmap <Leader>xe :cs find e <C-R>=expand("<cword>")<CR><CR>
       nmap <Leader>xf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+      nmap <Leader>xg :cs find g <C-R>=expand("<cword>")<CR><CR>
       nmap <Leader>xi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-      nmap <Leader>xd :cs find d <C-R>=expand("<cword>")<CR><CR>
-      nmap <silent> <Leader>xk :call Inline_toggleCscopeConnection()<CR>
+      nmap <Leader>xs :cs find s <C-R>=expand("<cword>")<CR><CR>
+      nmap <Leader>xt :cs find t <C-R>=expand("<cword>")<CR><CR>
       let g:cscope#isLoaded = 1
       let g:cscope#isConnected = 1
     endif
