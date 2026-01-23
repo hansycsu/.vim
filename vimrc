@@ -160,6 +160,50 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
     endif
   endfunc
 
+  " Update cstag on save {{{
+  "
+  " Enable: let g:cstag#enAutoUpdate = 1
+  let g:cstag#indexJob = 0
+
+  func! Inline_updateIndexAsync()
+    if !exists('g:cstag#enAutoUpdate') || g:cstag#enAutoUpdate == 0 | return | endif
+    if !exists('g:cscope#isLoaded') | return | endif
+    " 殺掉舊任務
+    if type(g:cstag#indexJob) == v:t_job && job_status(g:cstag#indexJob) == "run"
+      call job_stop(g:cstag#indexJob)
+    endif
+    " shell 命令
+    let l:cmd = 'cscope -bkqi .ycsu/filelist-cpp -f .ycsu/cscope.out.tmp && ' .
+          \ 'ctags -L .ycsu/filelist-cpp -f .ycsu/tags.tmp && ' .
+          \ 'mv .ycsu/cscope.out.tmp .ycsu/cscope.out && ' .
+          \ 'mv .ycsu/tags.tmp .ycsu/tags'
+    " 背景執行
+    if filereadable(".ycsu/filelist-cpp")
+      let g:cstag#indexJob = job_start(['/bin/sh', '-c', l:cmd], {
+            \ "stoponexit": "term",
+            \ "exit_cb": "Inline_indexFinished"
+            \ })
+    endif
+  endfunc
+
+  func! Inline_indexFinished(job, status)
+    if a:status == 0
+      " 更新成功, 重新載入索引
+      silent! cs kill 0
+      if filereadable(".ycsu/cscope.out")
+        silent! cs add .ycsu/cscope.out
+      endif
+      redraw | echo "Cstag updated"
+    else
+      " 更新失敗
+      redraw | echo "Update Cscope & Tags fail"
+    endif
+  endfunc
+
+  " 設定存檔自動觸發
+  autocmd BufWritePost *.c,*.h,*.cpp call Inline_updateIndexAsync()
+  " Update cstag on save }}}
+
   func! Inline_toggleCscopeConnection()
     if exists('g:cscope#isConnected')
       if g:cscope#isConnected
@@ -290,6 +334,18 @@ set foldtext=My_foldText()
   "            1. Create filelist of project in a file (unix newline separated)
   "            2. Print the path of file contains filelist
   command! -nargs=1 Ps call My_projectSearch(<f-args>)
+
+  " Usage: '<,'>MultipleReplace <TSV file>
+  "
+  "          按照 TSV file 定義的取代項目列表, 對選取範圍進行取代
+  "
+  "          TSV file 格式
+  "            兩個欄位, 使用 Tab ('\t' = 0x09) 分隔
+  "            PATTERN <Tab> REPLACE_STRING
+  "
+  "          支援範圍 (-range) 與一個路徑參數 (-nargs=1)
+  "          -complete=file 輸入路徑時可以 Tab 補完檔案路徑
+  command! -range -nargs=1 -complete=file MultipleReplace <line1>,<line2>call My_multipleReplace(<f-args>)
 
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
   autocmd Filetype * setlocal formatoptions-=c

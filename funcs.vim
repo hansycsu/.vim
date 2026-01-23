@@ -218,3 +218,51 @@ func! My_foldText()
     let spaceStr = substitute(spaceStr, ' ', '-', 'g')
     return spaceStr . textStr
 endfunc
+
+" 多重取代函式
+"
+" 按照 tsvFile 定義的取代項目列表, 對選取範圍進行取代
+"
+" tsvFile 格式
+"   兩個欄位, 使用 Tab ('\t' = 0x09) 分隔
+"   PATTERN <Tab> REPLACE_STRING
+func! My_multipleReplace(tsvFile) range
+  if !filereadable(a:tsvFile)
+    echoerr "File not found: " . a:tsvFile
+    return
+  endif
+  " Read TSV
+  let l:lines = readfile(a:tsvFile)
+  let l:start = a:firstline
+  let l:end = a:lastline
+  let l:count = 0
+  " Parse TSV
+  for l:line in l:lines
+    " Skip empty lines
+    if empty(l:line) | continue | endif
+    " Split by Tab
+    let l:cols = split(l:line, "\t")
+    " Skip wrong format
+    if len(l:cols) < 2 | continue | endif
+    " Set old & new string
+    let l:old = l:cols[0]
+    let l:new = l:cols[1]
+    " Find safe sep char
+    let l:seps = ['/', '#', '@', ';', '!', '%', '^', '~']
+    let l:sep = ''
+    for l:s in l:seps
+      if stridx(l:old, l:s) == -1 && stridx(l:new, l:s) == -1
+        let l:sep = l:s
+        break
+      endif
+    endfor
+    if empty(l:sep)
+      echoerr "Cannot find safe separator: " . l:old
+      continue
+    endif
+    " Start substitute
+    exe l:start . "," . l:end . "s" . l:sep . l:old . l:sep . l:new . l:sep . "ge"
+    let l:count += 1
+  endfor
+  echo 'Run ' . l:count . " substitutes. Done"
+endfunc
