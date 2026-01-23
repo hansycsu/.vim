@@ -137,7 +137,8 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
       if !empty(g:cscope#dbpath)
         let g:cscope#dbpath = fnamemodify(g:cscope#dbpath, ':p')
         exe 'cd ' . fnamemodify(g:cscope#dbpath, ':h')
-        cs add cscope.out
+        cd ..
+        exe 'cs add ' . g:cscope#dbpath
       elseif !empty($CSCOPE_DB)
         cs add $CSCOPE_DB
         let g:cscope#dbpath = fnamemodify($CSCOPE_DB, ':p')
@@ -192,7 +193,7 @@ set foldmethod=marker
 set incsearch
 set virtualedit=block
 set diffopt+=vertical
-set tags=./tags;,tags
+set tags=./.ycsu/tags;,./tags;,tags
 set ttimeoutlen=0
 set showcmd
 set nowrap
