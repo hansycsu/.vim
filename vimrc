@@ -173,12 +173,8 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
       call job_stop(g:cstag#indexJob)
     endif
     " shell 命令
-    let l:cmd = 'cscope -bkqi .ycsu/filelist-cpp -f .ycsu/cscope.out.tmp && ' .
-          \ 'ctags -L .ycsu/filelist-cpp -f .ycsu/tags.tmp && ' .
-          \ 'mv .ycsu/cscope.out.tmp .ycsu/cscope.out && ' .
-          \ 'mv .ycsu/cscope.out.tmp.in .ycsu/cscope.out.in && ' .
-          \ 'mv .ycsu/cscope.out.tmp.po .ycsu/cscope.out.po && ' .
-          \ 'mv .ycsu/tags.tmp .ycsu/tags'
+    let l:cmd = 'cscope -bkqi .ycsu/filelist-cpp -f .ycsu/cscope.out && ' .
+          \ 'ctags -L .ycsu/filelist-cpp -f .ycsu/tags'
     " 背景執行
     if filereadable(".ycsu/filelist-cpp")
       let g:cstag#indexJob = job_start(['/bin/sh', '-c', l:cmd], {
