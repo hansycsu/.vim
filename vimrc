@@ -176,6 +176,8 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
     let l:cmd = 'cscope -bkqi .ycsu/filelist-cpp -f .ycsu/cscope.out.tmp && ' .
           \ 'ctags -L .ycsu/filelist-cpp -f .ycsu/tags.tmp && ' .
           \ 'mv .ycsu/cscope.out.tmp .ycsu/cscope.out && ' .
+          \ 'mv .ycsu/cscope.out.tmp.in .ycsu/cscope.out.in && ' .
+          \ 'mv .ycsu/cscope.out.tmp.po .ycsu/cscope.out.po && ' .
           \ 'mv .ycsu/tags.tmp .ycsu/tags'
     " 背景執行
     if filereadable(".ycsu/filelist-cpp")
