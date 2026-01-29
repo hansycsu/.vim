@@ -99,6 +99,8 @@ Plugin 'manually_MRU_Tab', {'pinned': 1}
   let g:ctrlp_working_path_mode = 'raw'
   " MpSdk2015 Ignore files for CtrlP
   " let g:ctrlp_custom_ignore = {'dir':  '\v[\/](Release)$', 'file': '\v\.(resx|user|sln|rc|ncb|suo|dll)$'}
+  " Ctrl-Z + Ctrl-O will prompt for an option keypress before opening
+  let g:ctrlp_arg_map = 1
   nnoremap zp :CtrlP
   nnoremap zpt :CtrlPTag<CR>
   nnoremap zpb :CtrlPBufTag<CR>
