@@ -240,10 +240,10 @@ func! My_multipleReplace(tsvFile) range
   for l:line in l:lines
     " Skip empty lines
     if empty(l:line) | continue | endif
-    " Split by Tab
-    let l:cols = split(l:line, "\t")
+    " Split by Tab (keepempty = 1, 允許取代成空字串)
+    let l:cols = split(l:line, "\t", 1)
     " Skip wrong format
-    if len(l:cols) < 2 | continue | endif
+    if len(l:cols) != 2 | continue | endif
     " Set old & new string
     let l:old = l:cols[0]
     let l:new = l:cols[1]
