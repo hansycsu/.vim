@@ -350,6 +350,7 @@ set foldtext=My_foldText()
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
   autocmd Filetype * setlocal formatoptions-=c
   autocmd BufRead,BufNewFile *.cmm set filetype=cmm
+  autocmd FileType c,cpp iabbrev <buffer> doxy /**<CR>@brief 簡述函式功能<CR><CR>函式的詳細描述，包括原理，需求，適用範圍<CR><CR>@param[in] inputParam1 輸入參數1的描述<CR>@param[out] outputParam1 輸出參數1的描述<CR><CR>@return<CR>  - 0: 成功<CR>/
   "}}}
 " Function Key {{{
   nnoremap <F1> :tab h 
