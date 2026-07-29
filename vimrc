@@ -230,7 +230,7 @@ set listchars+=space:.
 set sessionoptions-=options
 set sessionoptions+=localoptions
 set ignorecase smartcase
-set textwidth=80
+set textwidth=0
 set formatoptions-=t
 set backspace=indent,start,eol
 set foldmethod=marker
