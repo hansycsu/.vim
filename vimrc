@@ -238,6 +238,7 @@ set incsearch
 set virtualedit=block
 set diffopt+=vertical
 set tags=./.ycsu/tags;,./tags;,tags
+set notagrelative
 set ttimeoutlen=0
 set showcmd
 set nowrap
