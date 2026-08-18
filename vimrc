@@ -269,7 +269,7 @@ set foldtext=My_foldText()
   noremap <C-@> @@
   noremap <C-2> @@
   inoremap <C-j> <Esc>gUiwea
-  nnoremap S :wa<CR>
+  nnoremap S :w<CR>
   noremap zm zM
   noremap zr zR
   noremap zM zm
