@@ -320,6 +320,7 @@ set foldtext=My_foldText()
   command! -nargs=+ -complete=command Windo call My_windo(<q-args>)
   command! -nargs=+ -complete=command Windofast noautocmd call My_windo(<q-args>)
   command! -nargs=+ -complete=command Bufdo call My_bufdo(<q-args>)
+  command! EnableMarkdownFolding let g:markdown_folding = 1 | e
 
   " Usage: Grep <pattern> <filename>
   "          if <pattern> and <filename> contains whitespace, they must be
