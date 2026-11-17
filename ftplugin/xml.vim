@@ -1,2 +1,1 @@
-runtime! ftplugin/html.vim
-
+execute 'source ' . fnameescape(expand('<sfile>:p:h') . '/html.vim')
